@@ -1,27 +1,27 @@
 ###GPIO的端口模式###
 
 ***输入部分***
-浮空输入：
+浮空输入：GPIO_Mode_IN_FLOATING​
 可读取引脚电平，但是引脚悬空，默认状态不确定
 
-上拉输入：
+上拉输入：GPIO_Mode_IPU
 可读取引脚电平，引脚默认高电平
 
-下拉输入：
+下拉输入：GPIO_Mode_IPD
 可读取引脚电平，引脚默认低电平
 
-模拟输入：
+模拟输入：GPIO_Mode_AIN
 无效化GPIO口，模拟电压直接接入内部ACD模块（导通）
 
 
 ***输出部分***
-推挽输出：
+推挽输出：GPIO_Mode_Out_PP
 在推挽输出模式下，高电平接VDD，低电平接GND
 GPIO口高电平具有更强的驱动能力，部分情况设置不用三极管就可以直接驱动用电器，
 但是在这种模式下，IO口对高低电平具有绝对的控制权，即无法接收外部信号了，外部设备无法改变引脚电平
 虽然在这种模式下还可以读取电平，但是基本只能用于判断输出结果符不符合预期
 
-开漏输出：
+开漏输出：GPIO_Mode_Out_OD
 在开漏模式下，高电平接高阻态VDD（VDD串联大电阻），低电平接GND，
 （前提是信号线上要接上拉电阻，因为高电平在内部是断开的，也就是只要不是低电平，上拉电阻会把信号线电平拉高）
 可以非常好的输出高电平和低电平，又不会产生多大电流，很好的保护通信设备
@@ -33,11 +33,11 @@ GPIO口高电平具有更强的驱动能力，部分情况设置不用三极管�
 ----据信号不再来自CPU直接写入的输出数据寄存器，
 ----而是来自于芯片内部的特定外设模块
 ----例如UART的发送引脚TX、I²C的时钟线SCL等
-复用推挽输出：
+复用推挽输出：GPIO_Mode_AF_PP
 在复用推挽输出模式下，高电平接VDD，低电平接GND
 效果和普通推挽很像，但是由片上外设控制（后面补充）
 
-复用开漏输出：
+复用开漏输出：GPIO_Mode_AF_OD
 在复用开漏模式下，高电平接高阻态VDD（VDD串联大电阻），低电平接GND，
 效果和普通开漏很像，但是由片上外设控制（后面补充）
 
@@ -49,4 +49,37 @@ GPIO口高电平具有更强的驱动能力，部分情况设置不用三极管�
 在上面这前8种主要模式中，四种输入模式均不具备输出能力
 
 
-###
+###开启端口时钟###
+RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);
+参数1：RCC_APB2Periph_GPIO<X>,其中x是第几组口，0-7分别映射A-G，个别型号只有ABC
+参数2：开启或关闭，ENABLE为开启，DISABLE为关闭
+
+
+###初始化端口###
+GPIO_Init(GPIOA,&GPIO_InitStructure);
+参数1：GPIO<X>,其中x是第几组，0-7分别映射A-G，个别型号只有ABC，如要控制A0这里填A
+参数2：结构体的地址，结构体类型为GPIO_InitTypeDef
+
+GPIO_InitTypeDef类型详解：
+GPIO_InitTypeDef GPIO_InitStructure;					//定义类型
+GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_OD;	//设置模式，看情况，八种模式
+GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;				//设置端口号，控制A0这里填0
+GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;	//设置频率（不省电无脑50hz）
+
+
+###控制端口###
+GPIO_SetBits(GPIOA,GPIO_Pin_0);
+作用：给A0口输出高电平
+参数1：RCC_APB2Periph_GPIO<X>,其中x是第几组口，0-7分别映射A-G，个别型号只有ABC
+参数2：设置端口号，控制A0这里填0
+
+GPIO_ResetBits(GPIOA,GPIO_Pin_0);
+作用：给A0口输出低电平
+参数1：RCC_APB2Periph_GPIO<X>,其中x是第几组口，0-7分别映射A-G，个别型号只有ABC
+参数2：设置端口号，控制A0这里填0
+
+GPIO_WriteBit(GPIOA,GPIO_Pin_0,Bit_RESET);
+作用：给A0口写入指定值，1为高电平，0为低电平
+参数1：RCC_APB2Periph_GPIO<X>,其中x是第几组口，0-7分别映射A-G，个别型号只有ABC
+参数2：设置端口号，控制A0这里填0
+参数3：写入1或0，其中Bit_RESET表示写入0，Bit_SET表示写入1
