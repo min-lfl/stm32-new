@@ -28,6 +28,8 @@
 ".\objects\delay.o"
 ".\objects\main.o"
 ".\objects\stm32f10x_it.o"
+".\objects\led.o"
+".\objects\key.o"
 --strict --scatter ".\Objects\Project.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
