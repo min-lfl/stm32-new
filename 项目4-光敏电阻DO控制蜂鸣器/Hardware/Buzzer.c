@@ -42,12 +42,12 @@ void Buzzer_OFF(void){
 /**
 	* @brief		获取蜂鸣器口输出寄存器状态
 	* @param		无
-	* @retval		输出状态，1或0
+	* @retval		输出状态，开启返回1，关闭返回0
 	*/
 uint8_t Buzzer_OUTGET(void){
 	if(GPIO_ReadOutputDataBit(Buzzer_GPIO_PORT,Buzzer_GPIO_PIN)==1){
-		return 1;
-	}else{
 		return 0;
+	}else{
+		return 1;
 	}
 }
