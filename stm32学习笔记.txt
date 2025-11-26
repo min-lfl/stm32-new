@@ -70,16 +70,52 @@ GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;	//设置频率（不省电无�
 ###控制端口###
 GPIO_SetBits(GPIOA,GPIO_Pin_0);
 作用：给A0口输出高电平
-参数1：RCC_APB2Periph_GPIO<X>,其中x是第几组口，0-7分别映射A-G，个别型号只有ABC
+参数1：GPIO<X>,其中x是第几组口，0-7分别映射A-G，个别型号只有ABC
 参数2：设置端口号，控制A0这里填0
 
 GPIO_ResetBits(GPIOA,GPIO_Pin_0);
 作用：给A0口输出低电平
-参数1：RCC_APB2Periph_GPIO<X>,其中x是第几组口，0-7分别映射A-G，个别型号只有ABC
+参数1：GPIO<X>,其中x是第几组口，0-7分别映射A-G，个别型号只有ABC
 参数2：设置端口号，控制A0这里填0
 
 GPIO_WriteBit(GPIOA,GPIO_Pin_0,Bit_RESET);
 作用：给A0口写入指定值，1为高电平，0为低电平
-参数1：RCC_APB2Periph_GPIO<X>,其中x是第几组口，0-7分别映射A-G，个别型号只有ABC
+参数1：GPIO<X>,其中x是第几组口，0-7分别映射A-G，个别型号只有ABC
 参数2：设置端口号，控制A0这里填0
 参数3：写入1或0，其中Bit_RESET表示写入0，Bit_SET表示写入1
+
+GPIO_Write(GPIOA,0x0001);
+作用：给一组16个端口写入一个16位数据，1为高电平，0为低电平
+参数1：GPIO<X>,其中x是第几组口，0-7分别映射A-G，个别型号只有ABC
+参数2：要写入的数据，0x0001表示高15位为0，低1位为1
+
+
+###读取端口###
+uint8_t  a = GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0)；
+作用：把A0口的电平读取出来赋值给变量a，a为无1符号8位，高1低0
+参数1：GPIO<X>,其中x是第几组口，0-7分别映射A-G，个别型号只有ABC
+参数2：设置端口号，控制A0这里填0
+
+uint8_t  a = GPIO_ReadOutputDataBit(GPIOA,GPIO_Pin_0);
+作用：把A0口的输出寄存器读取出来赋值给变量a，用来获取自己的输出状态
+参数1：GPIO<X>,其中x是第几组口，0-7分别映射A-G，个别型号只有ABC
+参数2：设置端口号，控制A0这里填0
+
+
+###关于结构体的思考###
+typedef unsigned char uchar;
+作用：把unsigned char这串难打的字符变成uchar这段好打的字符
+
+struct{char aaa;int bbb;float ccc;}Abc;
+作用：把aaa，bbb，ccc三个变量打包放到结构体Abc里，调用只需要Abc.aaa=0;即可
+
+如果把上面两个结合
+typedef struct{char aaa;int bbb;float ccc;} dabao;
+dabao Abc;
+作用：把结构体的结构定义成了dabao类型，并且用打包类型创建了一个该结构的结构体
+规范格式：
+typedef struct{
+	char aaa;
+	int bbb;
+	float ccc;
+} dabao;
