@@ -30,3 +30,4 @@
 .\objects\main.o: .\Linrary\misc.h
 .\objects\main.o: E:\Keil5 C51\Keil5 C51\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: .\System\DELAY.H
+.\objects\main.o: .\Hardware\LED.H
