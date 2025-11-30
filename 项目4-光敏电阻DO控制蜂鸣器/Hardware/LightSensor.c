@@ -18,9 +18,9 @@ void LightSensor_Init(void) {
 }
 
 /**
-	* @brief		获取光敏电阻DO口的值，返回按键0或1
+	* @brief		获取光敏电阻DO口的值，返回0或1
 	* @param		无
-	* @retval		按键的键值，0或1
+	* @retval		按键的键值，无光为1，有光为0
 	*/
 uint8_t LightSensorDo_GetNum(void){
 	return GPIO_ReadInputDataBit(LightSensor_GPIO_PORT,LightSensor_GPIO_PIN);

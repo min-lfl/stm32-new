@@ -10,7 +10,6 @@ int main(void){
 	LightSensor_Init();
 	Buzzer_Init();
 	while(1){
-		
 		if(LightSensorDo_GetNum()==1){
 			Buzzer_ON();
 		}else{

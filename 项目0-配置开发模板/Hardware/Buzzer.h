@@ -1,3 +1,4 @@
+//蜂鸣器模块
 #ifndef __Buzzer_H__
 #define __Buzzer_H__
 
