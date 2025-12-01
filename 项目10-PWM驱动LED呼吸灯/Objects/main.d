@@ -38,3 +38,4 @@
 .\objects\main.o: .\Hardware\CountSensor.H
 .\objects\main.o: .\Hardware\Encoder.H
 .\objects\main.o: .\System\Timer.H
+.\objects\main.o: .\Hardware\PWM.H
