@@ -786,6 +786,16 @@
               <FileType>5</FileType>
               <FilePath>.\Hardware\PWM.h</FilePath>
             </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\motor.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

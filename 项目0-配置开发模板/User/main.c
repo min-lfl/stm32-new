@@ -10,38 +10,38 @@
 #include <Encoder.H>
 #include <Timer.H>
 #include <PWM.H>
+#include <motor.H>
 
-uint16_t num=0;
+int8_t num=0;
+int8_t Code=0;
 uint8_t key=0;
 
-//PWM2输出到舵机
+//PWM2输出到直流电机，旋转编码器控制速度和方向，按键1为总开关
 int main(void){
 	Encoder_Init();
 	Key_Init();
 	OLED_Init();
-	PWMservo_Init();
+	motor_Init();
 	OLED_ShowString(1,1,"num:");
 	while(1){
-		OLED_ShowNum(2,1,num,5);
-		num=num-GET_Encoder_Count()*5;
-		if(num<=5){
-			num=5;
+		//显示速度
+		OLED_ShowSignedNum(2,1,num,3);
+		//接收旋转编码器
+		num=num+GET_Encoder_Count()*5;
+		//把速度值更新到定时器
+		motor_SetSpeed(num);
+		
+		//总开关，如果按下就把速度强制置0，断电
+		key=Key_GetNum();
+		if(key==1){
+			Code=~Code;
+			
 		}
-		if(num>=25){
-			num=25;
+		if(Code){
+			motor_SetSpeed(0);
+			OLED_ShowString(3,1,"OFF");
+		}else{
+			OLED_ShowString(3,1,"ON ");
 		}
-		TIM_SetCompare2(TIM2,num);
-		Delay_ms(1);
 	}
 }
-
-
-//		key=Key_GetNum();
-//		if(key!=0){
-//			if(key==1){
-//				num=(num+5)%30;
-//				if(num==0){
-//					num=5;
-//				}
-//			}
-//		}

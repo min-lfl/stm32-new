@@ -39,3 +39,4 @@
 .\objects\main.o: .\Hardware\Encoder.H
 .\objects\main.o: .\System\Timer.H
 .\objects\main.o: .\Hardware\PWM.H
+.\objects\main.o: .\Hardware\motor.H
