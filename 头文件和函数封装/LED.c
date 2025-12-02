@@ -1,8 +1,8 @@
 #include "stm32f10x.h"                  // Device header
 
 // 分散式写法
-#define LED1_GPIO_PIN   GPIO_Pin_0					//第一个灯连接的口
-#define LED2_GPIO_PIN   GPIO_Pin_1					//第二个灯连接的口
+#define LED1_GPIO_PIN   GPIO_Pin_1					//第一个灯连接的口
+#define LED2_GPIO_PIN   GPIO_Pin_2					//第二个灯连接的口
 #define LED_GPIO_PORT   GPIOA						//第几组口
 #define LED_GPIO_CLK    RCC_APB2Periph_GPIOA		//第几组外设
 
