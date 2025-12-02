@@ -3,5 +3,6 @@
 #define __PWM_H__
 
 void PWM_Init(void);
-
+void PWMservo_Init(void);
+	
 #endif
