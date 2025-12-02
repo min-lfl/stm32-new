@@ -9,25 +9,30 @@
 #include <CountSensor.H>
 #include <Encoder.H>
 #include <Timer.H>
+#include <PWM.H>
+
+uint16_t i=0;
 
 
-int32_t num=0;
-
+//PWM输出到A0口控制呼吸灯，在oled显示分辨率自加
 int main(void){
 	OLED_Init();
-	Timer_init();
+	PWM_Init();
 	OLED_ShowString(1,1,"num:");
 	while(1){
-		OLED_ShowSignedNum(2,1,num,3);
-		OLED_ShowSignedNum(3,1,TIM_GetCounter(TIM2),5);
+		
+		for(i=0;i<100;i++){
+			OLED_ShowSignedNum(2,1,i,5);
+			TIM_SetCompare1(TIM2,i);
+			Delay_ms(10);
+		}
+		for(i=100;i>0;i--){
+			OLED_ShowSignedNum(2,1,i,5);
+			TIM_SetCompare1(TIM2,i);
+			Delay_ms(10);
+		}
+
 	}
 }
 
 
-
-void TIM2_IRQHandler(void){
-	if(TIM_GetITStatus(TIM2,TIM_IT_Update) == SET){
-		num++;
-		TIM_ClearITPendingBit(TIM2,TIM_IT_Update);
-	}
-} 

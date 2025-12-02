@@ -22,12 +22,12 @@ int main(void){
 	while(1){
 		
 		for(i=0;i<100;i++){
-			OLED_ShowSignedNum(2,1,TIM_GetCounter(TIM2),5);
+			OLED_ShowSignedNum(2,1,i,5);
 			TIM_SetCompare1(TIM2,i);
 			Delay_ms(10);
 		}
 		for(i=100;i>0;i--){
-			OLED_ShowSignedNum(2,1,TIM_GetCounter(TIM2),5);
+			OLED_ShowSignedNum(2,1,i,5);
 			TIM_SetCompare1(TIM2,i);
 			Delay_ms(10);
 		}
