@@ -4,5 +4,5 @@
 
 void IC_Init(void);
 uint32_t IC_GetFreg(void);   //获取频率
-
+uint32_t IC_GetDuty(void);   //获取占空比
 #endif

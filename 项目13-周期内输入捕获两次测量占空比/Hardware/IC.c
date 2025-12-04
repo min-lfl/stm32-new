@@ -25,7 +25,7 @@ void IC_Init(void){
 	TIM_TimeBaseInitStruct.TIM_RepetitionCounter = 0;
 	TIM_TimeBaseInit(TIM3,&TIM_TimeBaseInitStruct);
 	
-	//第四步初始化输入捕获单元，在每个下降沿把CNT转存到CCR
+	//第四步初始化输入捕获单元，在每个上升沿把CNT转存到CCR，信号来自边沿检测极性选择
 	TIM_ICInitTypeDef TIM_ICInitStruct;
 	TIM_ICStructInit(&TIM_ICInitStruct);                            
 	TIM_ICInitStruct.TIM_Channel = TIM_Channel_1;                   //指定TIM通道1，值会存入CCR1
@@ -45,7 +45,7 @@ void IC_Init(void){
 //	等效于
 	TIM_PWMIConfig(TIM3,&TIM_ICInitStruct);
 	
-	//第五步，用于在每个上升沿清零内部时钟计数器
+	//第五步，用于在每个上升沿清零内部时钟计数器，信号来自边沿检测极性选择
 	TIM_SelectInputTrigger(TIM3,TIM_TS_TI1FP1);    //从模式从接口一接收被测信号上升沿
 	TIM_SelectSlaveMode(TIM3,TIM_SlaveMode_Reset);  //从模式接收上升沿后触发Reset操作
 	
