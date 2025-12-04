@@ -11,6 +11,8 @@
 #include <Timer.H>
 #include <PWM.H>
 #include <motor.H>
+#include <IC.H>
+
 
 int8_t num=0;
 int8_t Code=0;

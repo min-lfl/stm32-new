@@ -27,6 +27,7 @@ int main(void){
 		//显示速度
 		OLED_ShowSignedNum(2,1,num,3);
 		//接收旋转编码器
+		if(num!=-100 || num!=100)
 		num=num+GET_Encoder_Count()*5;
 		//把速度值更新到定时器
 		motor_SetSpeed(num);

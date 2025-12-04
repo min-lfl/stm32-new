@@ -45,7 +45,7 @@ void Encoder_Init(void){
 
 void EXTI0_IRQHandler(void){
 	if(EXTI_GetFlagStatus(EXTI_Line0) == SET){
-		if(GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_1) == 0){
+		if((GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_1) == 0) || (Encoder_Count>0)){
 			Encoder_Count++;
 		}
 		EXTI_ClearITPendingBit(EXTI_Line0);
@@ -54,7 +54,7 @@ void EXTI0_IRQHandler(void){
 
 void EXTI1_IRQHandler(void){
 	if(EXTI_GetFlagStatus(EXTI_Line1) == SET){
-		if(GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_0) == 0){
+		if((GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_0) == 0) || (Encoder_Count<0)){
 			Encoder_Count--;
 		}
 		EXTI_ClearITPendingBit(EXTI_Line1);

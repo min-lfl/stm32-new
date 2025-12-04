@@ -796,6 +796,16 @@
               <FileType>5</FileType>
               <FilePath>.\Hardware\motor.h</FilePath>
             </File>
+            <File>
+              <FileName>IC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\IC.c</FilePath>
+            </File>
+            <File>
+              <FileName>IC.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\IC.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
