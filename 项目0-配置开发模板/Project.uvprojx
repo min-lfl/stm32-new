@@ -806,6 +806,16 @@
               <FileType>5</FileType>
               <FilePath>.\Hardware\IC.h</FilePath>
             </File>
+            <File>
+              <FileName>Encoder_time.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\Encoder_time.c</FilePath>
+            </File>
+            <File>
+              <FileName>Encoder_time.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\Encoder_time.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
