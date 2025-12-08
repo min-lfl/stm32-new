@@ -13,25 +13,47 @@
 #include <motor.H>
 #include <IC.H>
 #include <Encoder_time.H>
+#include <AD.H>
+
 
 int16_t num=0;
-int8_t Code=0;
-uint8_t key=0;
+void LED2_Init(void);
 
-
+//这个例子
 int main(void){
-	Encoder_time_Init();
-//	Encoder_Init();
 	OLED_Init();
-	OLED_ShowString(1,1,"num:");
-	OLED_ShowString(2,1,"S:000000r");
-	OLED_ShowString(3,1,"V:0000r/s");
+	AD_Init();
+	LED2_Init();
+	OLED_ShowString(1,1,"Voltage:");
+	OLED_ShowString(2,2,".00V");
+	OLED_ShowString(3,1,"num(0->4096):");
 	while(1){
-		num=Encoder_Get();
-		Delay_ms(500);
-		//显示位置，20格为一圈，所以格式为格数/20格
-		OLED_ShowSignedNum(2,3,num/20,5);
-		//显示速度，20格为一圈，公式为0.5秒内走过格数*2个0.5秒/20格
-		OLED_ShowSignedNum(3,3,((Encoder_Get()-num)*2)/20,3);
+		//读取电压寄存器
+		num=GET_ADC();
+		//把寄存器值转化电压
+		float abc = (float)num/4096*3.3;
+		//打印出电压
+		OLED_ShowNum(2,1,abc,1);
+		OLED_ShowNum(2,3,(int)(abc*100)%100,2);
+		//打印出原始寄存器值
+		OLED_ShowNum(4,1,num,4);
+		if(num>1600){
+			GPIO_SetBits(GPIOA,GPIO_Pin_1);
+		}else if(num<1500){
+			GPIO_ResetBits(GPIOA,GPIO_Pin_1);
+		}
 	}
+}
+
+
+void LED2_Init(void){
+	//开启对应外设时钟
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);
+	
+	//初始化LED接口
+	GPIO_InitTypeDef GPIO_InitStructure;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_Init(GPIOA,&GPIO_InitStructure);
 }
