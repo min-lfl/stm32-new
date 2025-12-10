@@ -14,25 +14,33 @@
 #include <IC.H>
 #include <Encoder_time.H>
 #include <AD.H>
+#include <MyDMA.H>
 
-
-int16_t num=0;
-void LED2_Init(void);
+uint8_t DateA[] = {0x01,0x02,0x03,0x04};
+uint8_t DateB[] = {0,0,0,0};
+uint8_t i=0;
 
 //这个例子
 int main(void){
 	OLED_Init();
-	AD_Init();
-	OLED_ShowString(1,1,"AD1:");
-	OLED_ShowString(2,1,"AD2:");
-	OLED_ShowString(3,1,"AD3:");
-	OLED_ShowString(4,1,"AD4:");
+//	OLED_ShowString(1,1,"0x");
 	
+	
+	
+	MyDMA_Init();
+	DMA_Start();
 	while(1){
-		OLED_ShowNum(1,6,GET_ADC_TD1() ,4);
-		OLED_ShowNum(2,6,GET_ADC_TD2() ,4);
-		OLED_ShowNum(3,6,GET_ADC_TD3() ,4);
-		OLED_ShowNum(4,6,GET_ADC_TD4() ,4);
+		for(i=0;i<4;i++){
+			OLED_ShowHexNum(2,i*3+1,DateA[i],2);
+		}
+		for(i=0;i<4;i++){
+			OLED_ShowHexNum(3,i*3+1,DateB[i],2);
+		}
+//		DateA[0]=0x06;
+//		DateA[1]=0x06;
+//		DateA[2]=0x06;
+//		DateA[3]=0x06;
+//		DMA_Start();
 	}
 }
 
