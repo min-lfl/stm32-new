@@ -28,7 +28,7 @@ int main(void){
 	
 	
 	MyDMA_Init();
-	
+	DMA_Start();
 	while(1){
 		for(i=0;i<4;i++){
 			OLED_ShowHexNum(2,i*3+1,DateA[i],2);
@@ -36,11 +36,11 @@ int main(void){
 		for(i=0;i<4;i++){
 			OLED_ShowHexNum(3,i*3+1,DateB[i],2);
 		}
-		DateA[0]=0x06;
-		DateA[1]=0x06;
-		DateA[2]=0x06;
-		DateA[3]=0x06;
-		DMA_Start();
+//		DateA[0]=0x06;
+//		DateA[1]=0x06;
+//		DateA[2]=0x06;
+//		DateA[3]=0x06;
+//		DMA_Start();
 	}
 }
 

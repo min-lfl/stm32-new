@@ -8,9 +8,9 @@ void MyDMA_Init(void){
 	//初始化DMA
 	DMA_InitTypeDef DMA_InitStruct;
 	DMA_StructInit(&DMA_InitStruct);
-	DMA_InitStruct.DMA_BufferSize = DMA_MemoryDataSize_Byte;               //缓冲区大小，这里借用目标长度
+	DMA_InitStruct.DMA_BufferSize = 4;                                     //缓冲区大小，表示要转运几个单元的数据，与之对应的是DMA_SetCurrDataCounter()函数
 	DMA_InitStruct.DMA_DIR = DMA_DIR_PeripheralSRC;                        //设定外设为源
-	DMA_InitStruct.DMA_M2M = DMA_M2M_Enable;                               //是否用于内存到内存的传输，这里打开
+	DMA_InitStruct.DMA_M2M = DMA_M2M_Enable;                               //指定软件传输（用于内存到内存），还是硬件传输，这里软件
 	DMA_InitStruct.DMA_MemoryBaseAddr = 0x20000004;                        //  目标（内存）地址
 	DMA_InitStruct.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;           //  目标地址长度,8位
 	DMA_InitStruct.DMA_MemoryInc = DMA_MemoryInc_Enable;                   //  目标（内存）是否递增
@@ -23,19 +23,20 @@ void MyDMA_Init(void){
 	DMA_Init(DMA1_Channel1,&DMA_InitStruct);
 	
 	
-	//设置要循环传几个数据
-	DMA_SetCurrDataCounter(DMA1_Channel1,4);
-	
-	DMA_Cmd(DMA1_Channel1,ENABLE);
+	DMA_Cmd(DMA1_Channel1,DISABLE);
 }
 
 //DMA启动
 void DMA_Start(void){
 	//关闭DMA
 	DMA_Cmd(DMA1_Channel1,DISABLE);
-	//重装计数器，这里的4会递减，表示向后运4个
+	//写入重装计数器，这里的4会递减，表示向后运4个
 	DMA_SetCurrDataCounter(DMA1_Channel1,4);
 	//打开DMA
 	DMA_Cmd(DMA1_Channel1,ENABLE);
+	
+	//判断转运是否完成,判断完成标志位并清零
+	while(DMA_GetFlagStatus(DMA1_FLAG_TC1) == RESET);
+	DMA_ClearFlag(DMA1_FLAG_TC1);
 }
 
