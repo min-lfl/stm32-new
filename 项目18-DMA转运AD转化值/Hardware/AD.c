@@ -67,37 +67,4 @@ void AD_Init(uint16_t *DateA){
 	//软件触发一次，开始扫描
 	ADC_SoftwareStartConvCmd(ADC1,ENABLE);
 }
-	
-uint16_t GET_ADC_TD1(void){
-	//指定通道1，A0
-	ADC_RegularChannelConfig(ADC1,ADC_Channel_0,1,ADC_SampleTime_55Cycles5);
-	//返回通道1输出
-	ADC_SoftwareStartConvCmd(ADC1,ENABLE);
-	while(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC) == RESET);
-	return ADC_GetConversionValue(ADC1);
-}
-uint16_t GET_ADC_TD2(void){
-	//指定通道2，A1
-	ADC_RegularChannelConfig(ADC1,ADC_Channel_1,1,ADC_SampleTime_55Cycles5);
-	//返回通道1输出
-	ADC_SoftwareStartConvCmd(ADC1,ENABLE);
-	while(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC) == RESET);
-	return ADC_GetConversionValue(ADC1);
-}
-uint16_t GET_ADC_TD3(void){
-	//指定通道3，A2
-	ADC_RegularChannelConfig(ADC1,ADC_Channel_2,1,ADC_SampleTime_55Cycles5);
-	//返回通道1输出
-	ADC_SoftwareStartConvCmd(ADC1,ENABLE);
-	while(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC) == RESET);
-	return ADC_GetConversionValue(ADC1);
-}
-uint16_t GET_ADC_TD4(void){
-	//指定通道4，A3
-	ADC_RegularChannelConfig(ADC1,ADC_Channel_3,1,ADC_SampleTime_55Cycles5);
-	//返回通道1输出
-	ADC_SoftwareStartConvCmd(ADC1,ENABLE);
-	while(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC) == RESET);
-	return ADC_GetConversionValue(ADC1);
-}
 

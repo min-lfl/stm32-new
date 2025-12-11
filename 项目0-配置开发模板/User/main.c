@@ -16,31 +16,27 @@
 #include <AD.H>
 #include <MyDMA.H>
 
-uint8_t DateA[] = {0x01,0x02,0x03,0x04};
+uint16_t DateA[] = {0x01,0x02,0x03,0x04};
 uint8_t DateB[] = {0,0,0,0};
 uint8_t i=0;
+
 
 //这个例子
 int main(void){
 	OLED_Init();
-//	OLED_ShowString(1,1,"0x");
+	AD_Init(DateA);
 	
-	
-	
-	MyDMA_Init();
-	DMA_Start();
+	OLED_ShowString(1,1,"AD1:");
+	OLED_ShowString(2,1,"AD2:");
+	OLED_ShowString(3,1,"AD3:");
+	OLED_ShowString(4,1,"AD4:");
 	while(1){
-		for(i=0;i<4;i++){
-			OLED_ShowHexNum(2,i*3+1,DateA[i],2);
-		}
-		for(i=0;i<4;i++){
-			OLED_ShowHexNum(3,i*3+1,DateB[i],2);
-		}
-//		DateA[0]=0x06;
-//		DateA[1]=0x06;
-//		DateA[2]=0x06;
-//		DateA[3]=0x06;
-//		DMA_Start();
+		OLED_ShowNum(1,6,DateA[0],4);
+		OLED_ShowNum(2,6,DateA[1],4);
+		OLED_ShowNum(3,6,DateA[2],4);
+		OLED_ShowNum(4,6,DateA[3],4);
+//		OLED_ShowHexNum(4,2,(uint32_t)DateA,8);
+//		OLED_ShowHexNum(4,2,(uint32_t)&(ADC1->DR),8);
 	}
 }
 

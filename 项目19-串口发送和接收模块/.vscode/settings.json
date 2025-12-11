@@ -1,0 +1,8 @@
+{
+    "C_Cpp.intelliSenseEngine": "default",
+    "C_Cpp.errorSquiggles": "enabled",
+    "C_Cpp.default.compilerPath": "C:/13.2 Rel1/bin/arm-none-eabi-gcc.exe",
+    "C_Cpp.autocomplete": "default",
+
+    "editor.parameterHints.enabled": true,
+}
