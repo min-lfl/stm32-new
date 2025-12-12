@@ -838,7 +838,7 @@ I (.\Linrary\stm32f10x_usart.h)(0x4D783BB4)
 I (.\Linrary\stm32f10x_wwdg.h)(0x4D783BB4)
 I (.\Linrary\misc.h)(0x4D783BB4)
 F (.\System\MyDMA.h)(0x69382123)()
-F (.\System\Usart.c)(0x693AE6DF)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\start -I .\User -I .\Linrary -I .\System -I .\Hardware-I.\RTE\_Target_1-I"E:\Keil5 C51\Keil5 C51\ARM\PACK\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"E:\Keil5 C51\Keil5 C51\ARM\CMSIS\Include"-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\usart.o --omf_browse .\objects\usart.crf --depend .\objects\usart.d)
+F (.\System\Usart.c)(0x693BF3F3)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\start -I .\User -I .\Linrary -I .\System -I .\Hardware-I.\RTE\_Target_1-I"E:\Keil5 C51\Keil5 C51\ARM\PACK\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"E:\Keil5 C51\Keil5 C51\ARM\CMSIS\Include"-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\usart.o --omf_browse .\objects\usart.crf --depend .\objects\usart.d)
 I (.\start\stm32f10x.h)(0x4D783CB4)
 I (.\start\core_cm3.h)(0x4D523B58)
 I (E:\Keil5 C51\Keil5 C51\ARM\ARMCC\include\stdint.h)(0x588B8344)
@@ -868,8 +868,8 @@ I (.\Linrary\stm32f10x_usart.h)(0x4D783BB4)
 I (.\Linrary\stm32f10x_wwdg.h)(0x4D783BB4)
 I (.\Linrary\misc.h)(0x4D783BB4)
 I (.\System\DELAY.H)(0x6130920D)
-F (.\System\Usart.h)(0x693A8E33)()
-F (.\User\main.c)(0x693B07A2)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\start -I .\User -I .\Linrary -I .\System -I .\Hardware-I.\RTE\_Target_1-I"E:\Keil5 C51\Keil5 C51\ARM\PACK\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"E:\Keil5 C51\Keil5 C51\ARM\CMSIS\Include"-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\System\Usart.h)(0x693BDFEB)()
+F (.\User\main.c)(0x693C0668)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\start -I .\User -I .\Linrary -I .\System -I .\Hardware-I.\RTE\_Target_1-I"E:\Keil5 C51\Keil5 C51\ARM\PACK\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"E:\Keil5 C51\Keil5 C51\ARM\CMSIS\Include"-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (.\start\stm32f10x.h)(0x4D783CB4)
 I (.\start\core_cm3.h)(0x4D523B58)
 I (E:\Keil5 C51\Keil5 C51\ARM\ARMCC\include\stdint.h)(0x588B8344)
@@ -914,11 +914,10 @@ I (.\Hardware\IC.H)(0x69317EDE)
 I (.\Hardware\Encoder_time.H)(0x6932C7EA)
 I (.\Hardware\AD.H)(0x693A785A)
 I (.\System\MyDMA.H)(0x69382123)
-I (.\System\Usart.H)(0x693A8E33)
-I (User\test.h)(0x693AF21F)
+I (.\System\Usart.H)(0x693BDFEB)
 F (.\User\stm32f10x_conf.h)(0x6929398A)()
 F (.\User\stm32f10x_it.c)(0x4D99A59E)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\start -I .\User -I .\Linrary -I .\System -I .\Hardware-I.\RTE\_Target_1-I"E:\Keil5 C51\Keil5 C51\ARM\PACK\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"E:\Keil5 C51\Keil5 C51\ARM\CMSIS\Include"-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\stm32f10x_it.o --omf_browse .\objects\stm32f10x_it.crf --depend .\objects\stm32f10x_it.d)
-I (User\stm32f10x_it.h)(0x4D99A59E)
+I (User\stm32f10x_it.h)(0x693B0A48)
 I (.\start\stm32f10x.h)(0x4D783CB4)
 I (.\start\core_cm3.h)(0x4D523B58)
 I (E:\Keil5 C51\Keil5 C51\ARM\ARMCC\include\stdint.h)(0x588B8344)
@@ -947,7 +946,7 @@ I (.\Linrary\stm32f10x_tim.h)(0x4D783BB4)
 I (.\Linrary\stm32f10x_usart.h)(0x4D783BB4)
 I (.\Linrary\stm32f10x_wwdg.h)(0x4D783BB4)
 I (.\Linrary\misc.h)(0x4D783BB4)
-F (.\User\stm32f10x_it.h)(0x4D99A59E)()
+F (.\User\stm32f10x_it.h)(0x693B0A48)()
 F (.\Hardware\LED.c)(0x692ED536)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\start -I .\User -I .\Linrary -I .\System -I .\Hardware-I.\RTE\_Target_1-I"E:\Keil5 C51\Keil5 C51\ARM\PACK\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"E:\Keil5 C51\Keil5 C51\ARM\CMSIS\Include"-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\led.o --omf_browse .\objects\led.crf --depend .\objects\led.d)
 I (.\start\stm32f10x.h)(0x4D783CB4)
 I (.\start\core_cm3.h)(0x4D523B58)
@@ -1069,7 +1068,7 @@ I (.\Linrary\stm32f10x_usart.h)(0x4D783BB4)
 I (.\Linrary\stm32f10x_wwdg.h)(0x4D783BB4)
 I (.\Linrary\misc.h)(0x4D783BB4)
 F (.\Hardware\LightSensor.h)(0x692BA6F3)()
-F (.\Hardware\OLED.c)(0x6703BBF3)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\start -I .\User -I .\Linrary -I .\System -I .\Hardware-I.\RTE\_Target_1-I"E:\Keil5 C51\Keil5 C51\ARM\PACK\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"E:\Keil5 C51\Keil5 C51\ARM\CMSIS\Include"-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\oled.o --omf_browse .\objects\oled.crf --depend .\objects\oled.d)
+F (.\Hardware\OLED.c)(0x693B095C)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\start -I .\User -I .\Linrary -I .\System -I .\Hardware-I.\RTE\_Target_1-I"E:\Keil5 C51\Keil5 C51\ARM\PACK\Keil\STM32F1xx_DFP\2.4.1\Device\Include"-I"E:\Keil5 C51\Keil5 C51\ARM\CMSIS\Include"-D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\oled.o --omf_browse .\objects\oled.crf --depend .\objects\oled.d)
 I (.\start\stm32f10x.h)(0x4D783CB4)
 I (.\start\core_cm3.h)(0x4D523B58)
 I (E:\Keil5 C51\Keil5 C51\ARM\ARMCC\include\stdint.h)(0x588B8344)

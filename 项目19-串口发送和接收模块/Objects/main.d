@@ -45,4 +45,3 @@
 .\objects\main.o: .\Hardware\AD.H
 .\objects\main.o: .\System\MyDMA.H
 .\objects\main.o: .\System\Usart.H
-.\objects\main.o: User\test.h

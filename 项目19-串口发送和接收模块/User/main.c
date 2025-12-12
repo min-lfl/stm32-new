@@ -23,14 +23,13 @@ uint8_t num=0;
 int main(void){
 	OLED_Init();
 	Usart_Init();
-	OLED_ShowString(1,1,"AD1:");
+	OLED_ShowString(1,1,"AD7:");
 	while(1){
 		if(USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == SET){
 			num=USART1_ReceiveChar();
 		}
 		OLED_ShowHexNum(1,6,num,4);
 		USART1_SendChar(num);
-		
 	}
 }
 
