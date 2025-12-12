@@ -1,6 +1,8 @@
 #include "stm32f10x.h"                  // Device header
 #include <DELAY.H>
 
+
+//串口1初始化，波特率9600
 void Usart_Init(void){
 	//给串口1模块上电，GPIOA上电
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1,ENABLE);
@@ -35,6 +37,7 @@ void Usart_Init(void){
 }
 
 //轮询发送一个字节
+//参数1：要发送的字节
 void USART1_SendChar(uint8_t ch)
 {
     while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET);  // 等待发送缓冲区空
@@ -42,7 +45,23 @@ void USART1_SendChar(uint8_t ch)
 }
 
 //接收一个字节
+//返回值：接收到的数据
 uint8_t USART1_ReceiveChar(void)
 {
 	return (uint8_t)USART_ReceiveData(USART1);
 }
+
+
+//发送数组，len为长度，单位字节
+//参数1：数组首地址
+//参数2：数组长度，单位字节
+void USART1_SendArray(uint8_t *Array,int8_t len){
+	uint8_t i=0;
+
+	for(i=0;i<len;i++)
+	{
+		USART1_SendChar(Array[i]);
+		Delay_us(100);
+	}
+}
+

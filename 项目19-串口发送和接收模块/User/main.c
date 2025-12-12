@@ -18,18 +18,24 @@
 #include <Usart.H>
 
 uint8_t num=0;
+uint8_t array[]={1,2,3,4,5};
 
-//这个例子
+//主函数
 int main(void){
 	OLED_Init();
 	Usart_Init();
 	OLED_ShowString(1,1,"AD7:");
 	while(1){
+		//接收串口数据
 		if(USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == SET){
 			num=USART1_ReceiveChar();
 		}
+		//显示数据到OLED
 		OLED_ShowHexNum(1,6,num,4);
+		// 并通过串口发送回电脑
 		USART1_SendChar(num);
+		USART1_SendArray(array,5);
+		// Delay_ms(500);
 	}
 }
 
