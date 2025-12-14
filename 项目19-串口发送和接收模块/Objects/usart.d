@@ -29,3 +29,5 @@
 .\objects\usart.o: .\Linrary\stm32f10x_wwdg.h
 .\objects\usart.o: .\Linrary\misc.h
 .\objects\usart.o: .\System\DELAY.H
+.\objects\usart.o: E:\Keil5 C51\Keil5 C51\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\usart.o: System\Usart.h
