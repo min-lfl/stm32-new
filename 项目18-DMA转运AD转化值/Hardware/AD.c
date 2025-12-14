@@ -35,7 +35,6 @@ void AD_Init(uint16_t *DateA){
 	ADC_Init(ADC1,&ADC_InitStruct);
 	
 	
-	
 	//初始化DMAADCx->DR
 	DMA_InitTypeDef DMA_InitStruct;
 	DMA_StructInit(&DMA_InitStruct);
