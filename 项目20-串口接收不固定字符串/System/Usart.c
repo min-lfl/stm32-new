@@ -6,9 +6,11 @@
 //模块内部变量区
 uint8_t usart1_rxbyteflag=0; //接收字节标志位
 uint8_t usart1_byte=0; //接收的字节缓存区
-uint8_t usart1_rxdateflag=0; //接收数据包标志位
-uint8_t usart1_RXdata[4]={0,0,0,0};//定义接收数据包缓存区
 
+
+char usart1_RXdata[100]={0}; //定义接收字符串缓存区
+uint8_t usart1_RXindex=0; //接收字符串索引
+uint8_t usart1_RXflag=0; //接收字符串标志位
 
 uint8_t usart1_TXdata[4];//定义固定4位发送数据包
 
@@ -152,48 +154,40 @@ void USART1_SendPacket(void){
 
 
 //###########接收部分######################################################################
-//中断接收一个数据包，固定4位，头为0xff,尾为0xfe，状态机设计，状态0为等待包头，状态1为接收数据，状态2为等待包尾
-//如果不是按协议接收，则丢弃数据，重新等待包头并且返回接收到的最后一个字节
+//串口1中断函数接收字符串，字符串以@开头，以\n结尾，字符串长度不固定，最长100，
+//状态机编程法，在中断函数内调用，
+//状态变量Code为0时等待字符串头@，状态为1时接收字符串，并且在接收完成后设置接收完成标志位
+//在接收完毕后再字符串末尾添加一个结束符'\0'
 void USART1_IRQHandler(void){
-	uint8_t res;
-	static uint8_t usart1_rxstate=0; //接收状态机状态变量
-	static uint8_t usart1_rxindex=0; //接收数据包索引
-	
 	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET){ //接收到数据
-		res=USART_ReceiveData(USART1); //读取接收到的数据
+		usart1_byte = USART_ReceiveData(USART1); //读取接收到的数据
 		
-		switch(usart1_rxstate){
-			case 0: //等待包头
-				if(res==0xff){ //收到包头，进入接收数据状态
-					usart1_rxstate=1;
-					usart1_rxindex=0;
+		//状态机处理接收的字符串
+		static uint8_t Code=0; //状态变量，初始状态为0，等待字符串头@
+		if(Code==0){
+			if(usart1_byte=='@'){ //检测到字符串头@
+				Code=1; //切换到接收状态
+				usart1_RXindex=0; //索引清零
+			}
+		}else if(Code==1){
+			if(usart1_byte=='\r' | usart1_byte=='\n'){ //检测到字符串尾\n
+				usart1_RXdata[usart1_RXindex++]='\0'; //添加结束符
+				usart1_RXflag=1; //设置接收完成标志位
+				Code=0; //切换回等待状态
+			}else{
+				usart1_RXdata[usart1_RXindex++]=usart1_byte; //存储接收到的字符
+				if(usart1_RXindex>=100){ //防止溢出
+					Code=0; //切换回等待状态
 				}
-				break;
-			case 1: //接收数据
-				usart1_RXdata[usart1_rxindex++]=res; //存储接收到的数据
-				if(usart1_rxindex>=4){ //数据接收完毕，进入等待包尾状态
-					usart1_rxstate=2;
-				}
-				break;
-			case 2: //等待包尾
-				if(res==0xfe){ //收到包尾，数据包接收完成
-					usart1_rxdateflag=1; //置数据包接收完成标志位
-				}
-				//无论是否收到正确的包尾，都回到等待包头状态
-				usart1_rxstate=0;
-				break;
-			default:
-				usart1_rxstate=0;
-				break;
+			}
 		}
 		
-		//同时设置字节接收标志位和缓存字节
-		usart1_byte=res;
-		usart1_rxbyteflag=1;
-		
+		usart1_rxbyteflag=1; //设置接收字节标志位
 		USART_ClearITPendingBit(USART1, USART_IT_RXNE); //清除中断标志位
 	}
 }
+
+
 
 //返回接收字节标志位
 uint8_t USART1_ReceiveByteFlag(void){
@@ -207,14 +201,15 @@ uint8_t USART1_ReceiveByte(void){
 }
 
 
-//返回接收数据包标志位
-uint8_t USART1_ReceiveDateFlag(void){
-	return usart1_rxdateflag;
+//返回接收到的字符串标志位,并且置0
+uint8_t USART1_ReceiveStringFlag(void){
+	usart1_RXflag=0; //清除标志位
+	return usart1_RXflag;
 }
 
-//返回接收到的数据包，置为接收数据包标志位
-uint8_t* USART1_ReceivePacket(void){
-	usart1_rxdateflag=0; //清除标志位
-	return usart1_RXdata; //返回接收到的数据包
+//返回接收到的字符串数组首地址
+char* USART1_ReceiveString(void){
+	return usart1_RXdata; //返回接收到的字符串首地址
 }
+
 

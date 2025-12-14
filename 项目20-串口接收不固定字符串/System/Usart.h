@@ -13,7 +13,7 @@ void USART1_SendPacket(void); //发送一个数据包，固定4位，头为0xff,
 
 uint8_t USART1_ReceiveByteFlag(void);//返回接收字节标志位
 uint8_t USART1_ReceiveByte(void);//返回接收到的字节，并且清除字节标志位
-uint8_t USART1_ReceiveDateFlag(void);//返回接收数据包标志位
-uint8_t* USART1_ReceivePacket(void);//返回接收到的数据包，置为接收数据包标志位,数据包固定4位，头为0xff,尾为0xfe
+uint8_t USART1_ReceiveStringFlag(void); //返回接收到的字符串标志位
+char* USART1_ReceiveString(void); //返回接收到的字符串数组首地址
 
 #endif
