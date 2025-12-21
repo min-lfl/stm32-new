@@ -691,6 +691,16 @@
               <FileType>5</FileType>
               <FilePath>.\System\Usart.h</FilePath>
             </File>
+            <File>
+              <FileName>I2C_Software.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\System\I2C_Software.c</FilePath>
+            </File>
+            <File>
+              <FileName>I2C_Software.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\System\I2C_Software.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -845,6 +855,16 @@
               <FileName>AD.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Hardware\AD.h</FilePath>
+            </File>
+            <File>
+              <FileName>MPU6050.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\MPU6050.c</FilePath>
+            </File>
+            <File>
+              <FileName>MPU6050.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\MPU6050.h</FilePath>
             </File>
           </Files>
         </Group>
