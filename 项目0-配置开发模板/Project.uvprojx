@@ -701,6 +701,16 @@
               <FileType>5</FileType>
               <FilePath>.\System\I2C_Software.h</FilePath>
             </File>
+            <File>
+              <FileName>I2C_Hardware.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\System\I2C_Hardware.c</FilePath>
+            </File>
+            <File>
+              <FileName>I2C_Hardware.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\System\I2C_Hardware.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -857,14 +867,29 @@
               <FilePath>.\Hardware\AD.h</FilePath>
             </File>
             <File>
-              <FileName>MPU6050.c</FileName>
+              <FileName>MPU6050_Sensor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Hardware\MPU6050.c</FilePath>
+              <FilePath>.\Hardware\MPU6050_Sensor.c</FilePath>
             </File>
             <File>
-              <FileName>MPU6050.h</FileName>
+              <FileName>MPU6050_Sensor.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Hardware\MPU6050.h</FilePath>
+              <FilePath>.\Hardware\MPU6050_Sensor.h</FilePath>
+            </File>
+            <File>
+              <FileName>MPU6050_Hardware.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\MPU6050_Hardware.c</FilePath>
+            </File>
+            <File>
+              <FileName>MPU6050_Hardware.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\MPU6050_Hardware.h</FilePath>
+            </File>
+            <File>
+              <FileName>MPU6050_reg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\MPU6050_reg.h</FilePath>
             </File>
           </Files>
         </Group>

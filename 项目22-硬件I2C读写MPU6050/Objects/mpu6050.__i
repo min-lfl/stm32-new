@@ -1,6 +1,0 @@
---c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\start -I .\User -I .\Linrary -I .\System -I .\Hardware --no-multibyte-chars
--I.\RTE\_Target_1
--I"E:\Keil5 C51\Keil5 C51\ARM\PACK\Keil\STM32F1xx_DFP\2.4.1\Device\Include"
--I"E:\Keil5 C51\Keil5 C51\ARM\CMSIS\Include"
--D__UVISION_VERSION="524" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER
--o .\objects\mpu6050.o --omf_browse .\objects\mpu6050.crf --depend .\objects\mpu6050.d "Hardware\MPU6050.c"

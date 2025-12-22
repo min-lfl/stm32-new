@@ -17,8 +17,8 @@
 #include <MyDMA.H>
 #include <Usart.H>
 #include <I2C_Software.H>
-#include <MPU6050.H>
-
+#include <MPU6050_Sensor.H>
+#include <MPU6050_Hardware.h>
 
 int16_t MPU6050xyz[6]={0};
 
@@ -26,7 +26,8 @@ int16_t MPU6050xyz[6]={0};
 //主函数
 int main(void){
 	OLED_Init();
-	MPU6050_Init();
+	OLED_ShowString(1,1,"1");
+	MPU6050_Hardware_Init();
 	OLED_ShowString(1,1,"MPU6050:");
 	
 	OLED_ShowString(2,1,"X:");
@@ -37,8 +38,7 @@ int main(void){
 	OLED_ShowString(4,9,"Za:");
 	//主循环
 	while(1){
-		MPU6050_ReadXYZ(MPU6050xyz);
-
+		MPU6050_Hardware_ReadXYZ(MPU6050xyz);
 		OLED_ShowSignedNum(2,3,MPU6050xyz[0],4);
 		OLED_ShowSignedNum(3,3,MPU6050xyz[1],4);
 		OLED_ShowSignedNum(4,3,MPU6050xyz[2],4);
