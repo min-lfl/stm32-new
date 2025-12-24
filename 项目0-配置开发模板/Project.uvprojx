@@ -711,6 +711,16 @@
               <FileType>5</FileType>
               <FilePath>.\System\I2C_Hardware.h</FilePath>
             </File>
+            <File>
+              <FileName>SPI_Software.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\System\SPI_Software.c</FilePath>
+            </File>
+            <File>
+              <FileName>SPI_Software.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\System\SPI_Software.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -890,6 +900,16 @@
               <FileName>MPU6050_reg.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Hardware\MPU6050_reg.h</FilePath>
+            </File>
+            <File>
+              <FileName>W25Q64_Sensor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\W25Q64_Sensor.c</FilePath>
+            </File>
+            <File>
+              <FileName>W25Q64_Sensor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\W25Q64_Sensor.h</FilePath>
             </File>
           </Files>
         </Group>

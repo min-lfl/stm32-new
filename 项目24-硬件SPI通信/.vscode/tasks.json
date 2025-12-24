@@ -1,0 +1,53 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+  "label": "Build (Keil)",
+  "type": "process",
+  "command": "E:\\Keil5 C51\\Keil5 C51\\UV4\\UV4.exe",
+  "args": [
+    "-b",
+    "${workspaceFolder}\\Project.uvprojx"
+  ],
+  "options": { "cwd": "${workspaceFolder}" },
+
+  "problemMatcher": {
+    "owner": "cpp",
+    "fileLocation": ["autoDetect", "${workspaceFolder}"],
+    "pattern": {
+      "regexp": "^(.+?)\\((\\d+)\\):\\s*(warning|error):\\s*(.*)$",
+      "file": 1,
+      "line": 2,
+      "severity": 3,
+      "message": 4
+    }
+  },
+
+  "presentation": {
+    "reveal": "never",
+    "panel": "dedicated",
+    "clear": true,
+    "showReuseMessage": false
+  },
+
+  "group": { "kind": "build", "isDefault": true }
+},
+    {
+  "label": "Flash (CubeProgrammer)",
+  "type": "process",
+  "command": "C:\\Program Files\\STMicroelectronics\\STM32Cube\\STM32CubeProgrammer\\bin\\STM32_Programmer_CLI.exe",
+  "args": [
+    "-c", "port=SWD", "freq=4000",
+    "-w", "${workspaceFolder}\\Objects\\Project.hex",
+    "-v",
+    "-rst"
+  ],
+  "problemMatcher": []
+},
+    {
+      "label": "Build+Flash",
+      "dependsOrder": "sequence",
+      "dependsOn": ["Build (Keil)", "Flash (CubeProgrammer)"]
+    }
+  ]
+}
